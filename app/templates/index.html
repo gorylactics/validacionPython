@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block titulo%}{{titulo}}{% endblock%}
+{%block contenido%}
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-lg-4 offset-1">
+            <h1>Registration</h1>
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <label class="form-label" for="first_name">First Name</label>
+                <input class="form-control" type="text" name="first_name" id="">
+                <label class="form-label" for="last_name">Last Name</label>
+                <input class="form-control" type="text" name="last_name" id="">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="">
+                <label class="form-label" for="password_confirm">Password Confirm</label>
+                <input class="form-control" type="password" name="password_confirm" id="">
+                <button type="submit" class="btn btn-secondary mt-4 px-5">Registrar</button>
+            </form>
+        </div>
+        <div class="col-lg-4 offset-1">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="">
+                <button type="submit" class="btn btn-secondary mt-4 px-5">Ingresar</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{%endblock%}
