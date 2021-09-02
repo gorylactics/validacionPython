@@ -6,11 +6,6 @@ import bcrypt
 def index(request):
     if request.method  == 'GET':
         contexto = {'titulo' : 'Login/Registro'}
-        # dependiendo de si la sesion exite muestra el index o una pag nueva como un muro dentro de la misma direccion raiz
-        # if sesion:
-        #     render(request, paginaprincipalnueva.html , contexto)
-        # else:
-        #     return render(request , 'index.html' , contexto)
         return render(request , 'index.html' , contexto)
 
 def registrar(request):
@@ -27,7 +22,6 @@ def registrar(request):
                 last_name = request.POST['last_name'],
                 email = request.POST['email'],
                 password = encriptacion,
-                
             )
             sesion_de_usuario = {
                     'id' : user.id,
@@ -40,7 +34,7 @@ def registrar(request):
             messages.success(request ,'Usuario registrado')
             return redirect('/success/')
 
-def log(request):
+def login(request):
     if request.method  == 'POST':
         user = User.objects.filter(email = request.POST['email'])
         if user:
