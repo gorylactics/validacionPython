@@ -1,11 +1,17 @@
 {% extends 'base.html'%}
 {% block titulo%}{{titulo}}{% endblock%}
 {%block contenido%}
+
+{%if request.session.usuario%}
+    {%include 'menu.html'%}
+{%endif%}
+
+{%if not request.session.usuario%}
 <div class="container pt-5">
     <div class="row">
         <div class="col-lg-4 offset-1">
             <h1>Registration</h1>
-            <form action="/" method="POST">
+            <form action="/registrar/" method="POST">
                 {% csrf_token %}
                 <label class="form-label" for="first_name">First Name</label>
                 <input class="form-control" type="text" name="first_name" id="">
@@ -21,7 +27,7 @@
             </form>
         </div>
         <div class="col-lg-4 offset-1">
-            <form action="" method="POST">
+            <form action="/log/" method="POST">
                 {% csrf_token %}
                 <h1>Login</h1>
                 <label class="form-label" for="email">Email</label>
@@ -30,8 +36,16 @@
                 <input class="form-control" type="password" name="password" id="">
                 <button type="submit" class="btn btn-secondary mt-4 px-5">Ingresar</button>
             </form>
-            
         </div>
     </div>
 </div>
+{%else%}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>{{request.session.usuario.nombre}}, Ya estas loguead@</h1>
+            </div>
+        </div>
+    </div>
+{%endif%}
 {%endblock%}

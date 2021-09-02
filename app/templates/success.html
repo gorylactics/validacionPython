@@ -1,6 +1,11 @@
 {% extends 'base.html'%}
 {%block titulo%}{{titulo}}{%endblock%}
 {%block contenido%}
-<h1>desde Success</h1>
-<a href="/">Logout</a>
+{%include 'menu.html'%}
+<h1>Bienvenid@ {{request.session.usuario.nombre}} {{request.session.usuario.apellido}}</h1>
+<br>
+<hr>
+<button class="btn btn-secondary mx-3 mt-4 px-5">
+    <a href="/logout/">Logout</a>
+</button>
 {%endblock%}
